@@ -13,8 +13,11 @@
 		4D82740F235F9DFE00AF74E5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D82740D235F9DFE00AF74E5 /* Main.storyboard */; };
 		4D827411235F9E0000AF74E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D827410235F9E0000AF74E5 /* Assets.xcassets */; };
 		4D827414235F9E0000AF74E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D827412235F9E0000AF74E5 /* LaunchScreen.storyboard */; };
-		4D82741F235F9E0000AF74E5 /* WeatherAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D82741E235F9E0000AF74E5 /* WeatherAppTests.swift */; };
 		4D82742A235F9E0000AF74E5 /* WeatherAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D827429235F9E0000AF74E5 /* WeatherAppUITests.swift */; };
+		4D82743B235FA1EB00AF74E5 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D82743A235FA1EB00AF74E5 /* AppCoordinator.swift */; };
+		4D82743F235FA4BE00AF74E5 /* AppCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D82743E235FA4BE00AF74E5 /* AppCoordinatorTests.swift */; };
+		4D827442235FA58C00AF74E5 /* FavouriteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D827441235FA58C00AF74E5 /* FavouriteListViewController.swift */; };
+		4D827444235FA5CE00AF74E5 /* FavouriteList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D827443235FA5CE00AF74E5 /* FavouriteList.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,11 +47,14 @@
 		4D827413235F9E0000AF74E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4D827415235F9E0000AF74E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4D82741A235F9E0000AF74E5 /* WeatherAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		4D82741E235F9E0000AF74E5 /* WeatherAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAppTests.swift; sourceTree = "<group>"; };
 		4D827420235F9E0000AF74E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4D827425235F9E0000AF74E5 /* WeatherAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D827429235F9E0000AF74E5 /* WeatherAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAppUITests.swift; sourceTree = "<group>"; };
 		4D82742B235F9E0000AF74E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4D82743A235FA1EB00AF74E5 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		4D82743E235FA4BE00AF74E5 /* AppCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinatorTests.swift; sourceTree = "<group>"; };
+		4D827441235FA58C00AF74E5 /* FavouriteListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteListViewController.swift; sourceTree = "<group>"; };
+		4D827443235FA5CE00AF74E5 /* FavouriteList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FavouriteList.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +105,7 @@
 		4D827406235F9DFE00AF74E5 /* WeatherApp */ = {
 			isa = PBXGroup;
 			children = (
+				4D827438235FA1D200AF74E5 /* Module */,
 				4D827407235F9DFE00AF74E5 /* AppDelegate.swift */,
 				4D827409235F9DFE00AF74E5 /* SceneDelegate.swift */,
 				4D82740B235F9DFE00AF74E5 /* ViewController.swift */,
@@ -113,8 +120,8 @@
 		4D82741D235F9E0000AF74E5 /* WeatherAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				4D82741E235F9E0000AF74E5 /* WeatherAppTests.swift */,
 				4D827420235F9E0000AF74E5 /* Info.plist */,
+				4D82743E235FA4BE00AF74E5 /* AppCoordinatorTests.swift */,
 			);
 			path = WeatherAppTests;
 			sourceTree = "<group>";
@@ -128,6 +135,32 @@
 			path = WeatherAppUITests;
 			sourceTree = "<group>";
 		};
+		4D827438235FA1D200AF74E5 /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				4D827440235FA57C00AF74E5 /* FavouriteList */,
+				4D827439235FA1E000AF74E5 /* App */,
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
+		4D827439235FA1E000AF74E5 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				4D82743A235FA1EB00AF74E5 /* AppCoordinator.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		4D827440235FA57C00AF74E5 /* FavouriteList */ = {
+			isa = PBXGroup;
+			children = (
+				4D827441235FA58C00AF74E5 /* FavouriteListViewController.swift */,
+				4D827443235FA5CE00AF74E5 /* FavouriteList.storyboard */,
+			);
+			path = FavouriteList;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -138,6 +171,7 @@
 				4D827400235F9DFE00AF74E5 /* Sources */,
 				4D827401235F9DFE00AF74E5 /* Frameworks */,
 				4D827402235F9DFE00AF74E5 /* Resources */,
+				4D827437235FA07900AF74E5 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -232,6 +266,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D827444235FA5CE00AF74E5 /* FavouriteList.storyboard in Resources */,
 				4D827414235F9E0000AF74E5 /* LaunchScreen.storyboard in Resources */,
 				4D827411235F9E0000AF74E5 /* Assets.xcassets in Resources */,
 				4D82740F235F9DFE00AF74E5 /* Main.storyboard in Resources */,
@@ -254,11 +289,33 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4D827437235FA07900AF74E5 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		4D827400235F9DFE00AF74E5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D827442235FA58C00AF74E5 /* FavouriteListViewController.swift in Sources */,
+				4D82743B235FA1EB00AF74E5 /* AppCoordinator.swift in Sources */,
 				4D82740C235F9DFE00AF74E5 /* ViewController.swift in Sources */,
 				4D827408235F9DFE00AF74E5 /* AppDelegate.swift in Sources */,
 				4D82740A235F9DFE00AF74E5 /* SceneDelegate.swift in Sources */,
@@ -269,7 +326,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D82741F235F9E0000AF74E5 /* WeatherAppTests.swift in Sources */,
+				4D82743F235FA4BE00AF74E5 /* AppCoordinatorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
