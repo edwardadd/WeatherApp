@@ -68,6 +68,11 @@ extension FavouriteListTests {
     }
 
     class MockNetworkService: WeatherFetchable {
+        func fetchForecast(city: String) -> AnyPublisher<WeatherForecast, Error> {
+            let forecast = WeatherForecast(city: WeatherForecast.City(id: 0, name: ""), list: [])
+            return CurrentValueSubject<WeatherForecast, Error>(forecast).eraseToAnyPublisher()
+        }
+
         func fetch(city: String) -> AnyPublisher<Weather, Error> {
             return CurrentValueSubject<Weather, Error>(Weather(name: "London")).eraseToAnyPublisher()
         }

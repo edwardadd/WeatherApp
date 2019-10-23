@@ -70,6 +70,13 @@ extension FavouriteListViewController: UITableViewDataSource {
 }
 
 extension FavouriteListViewController: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let favourites = viewModel?.favourites.value else { return }
+        let favourite = favourites[indexPath.row]
+        viewModel?.appCoordinator?.showDetails(favourite: favourite)
+    }
+
     func tableView(_ tableView: UITableView,
                    canEditRowAt indexPath: IndexPath) -> Bool {
         return true

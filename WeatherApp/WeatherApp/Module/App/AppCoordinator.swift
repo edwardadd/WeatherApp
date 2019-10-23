@@ -52,6 +52,17 @@ class AppCoordinator {
         navigationController?.present(newNavigationController, animated: true, completion: nil)
     }
 
+    func showDetails(favourite: Favourite) {
+        let storyboard = UIStoryboard(name: "DetailsViewController", bundle: nil)
+        guard let viewController = storyboard.instantiateInitialViewController() as? DetailsViewController else {
+            fatalError("Could not find initial view controller")
+        }
+        let viewModel = DetailsViewModel(appCoordinator: self,
+                                         networkService: networkService, favourite: favourite)
+        viewController.viewModel = viewModel
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+
     func refreshFavouritesList() {
         guard let favouriteListViewController = navigationController?.viewControllers.first as? FavouriteListViewController else { return }
 
