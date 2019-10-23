@@ -18,6 +18,9 @@ class FavouriteListViewController: UIViewController {
     private var cancelable: Set<AnyCancellable> = Set()
 
     override func viewDidLoad() {
+        tableView.register(UINib(nibName: FavouriteTableViewCell.identifier, bundle: nil),
+                           forCellReuseIdentifier: FavouriteTableViewCell.identifier)
+
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
                                                             target: self,
                                                             action: #selector(addButtonTapped(_:)))
@@ -56,10 +59,10 @@ extension FavouriteListViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let favourites = viewModel?.favourites.value else { return UITableViewCell() }
-
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = favourites[indexPath.row].name
+        guard let favourites = viewModel?.favourites.value,
+            let cell = tableView.dequeueReusableCell(withIdentifier: FavouriteTableViewCell.identifier,
+                                                     for: indexPath) as? FavouriteTableViewCell else { return UITableViewCell() }
+        cell.configure(locationName: favourites[indexPath.row].name)
         return cell
     }
 }
