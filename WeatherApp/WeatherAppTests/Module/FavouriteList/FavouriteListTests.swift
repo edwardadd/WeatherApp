@@ -34,7 +34,14 @@ class FavouriteListTests: XCTestCase {
                                                networkService: mockNetworkService)
 
         // Then
-        XCTAssertTrue(viewModel.showEmptyAddButton)
+        let exp = expectation(description: "Update when favourites change")
+        let subject = viewModel.favourites.sink(receiveCompletion: { _ in },
+                                                receiveValue: { favourites in
+            XCTAssertTrue(favourites.isEmpty)
+            exp.fulfill()
+        })
+
+        wait(for: [exp], timeout: 10)
     }
 
     func testShowFavourites() {
@@ -45,10 +52,24 @@ class FavouriteListTests: XCTestCase {
         // When
         let viewModel = FavouriteListViewModel(appCoordinator: mockAppCoordinator,
                                                networkService: mockNetworkService)
+
+        let exp = expectation(description: "Update when favourites change")
+        var count = 0
+        let subject = viewModel.favourites.sink(receiveCompletion: { _ in
+        }, receiveValue: { favourites in
+            if count == 0 {
+                XCTAssertTrue(favourites.isEmpty)
+            } else {
+                XCTAssertTrue(favourites.count > 0)
+                exp.fulfill()
+            }
+            count += 1
+        })
+
         viewModel.favourites.value = [Favourite(name: "London")]
 
         // Then
-        XCTAssertFalse(viewModel.showEmptyAddButton)
+        wait(for: [exp], timeout: 10)
     }
 }
 

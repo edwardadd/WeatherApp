@@ -15,8 +15,6 @@ struct FavouriteListViewModel {
 
     var favourites: CurrentValueSubject<[Favourite], Error>
 
-    var showEmptyAddButton: Bool { favourites.value.isEmpty }
-
     init(appCoordinator: AppCoordinator, networkService: WeatherFetchable) {
         self.appCoordinator = appCoordinator
         self.networkService = networkService

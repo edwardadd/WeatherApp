@@ -7,16 +7,15 @@
 //
 
 import UIKit
+import Combine
 
 class FavouriteListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var emptyAddButton: UIButton!
 
-    var viewModel: FavouriteListViewModel? {
-        didSet {
-            bindToViewModel()
-        }
-    }
+    var viewModel: FavouriteListViewModel?
+
+    private var cancelable: Set<AnyCancellable> = Set()
 
     override func viewDidLoad() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
@@ -28,18 +27,39 @@ class FavouriteListViewController: UIViewController {
     }
 
     private func bindToViewModel() {
-        if isViewLoaded {
-            let show = viewModel?.showEmptyAddButton ?? true
+        guard let viewModel = viewModel else { return }
 
-            tableView.isHidden = show
-            emptyAddButton.isHidden = !show
-        }
+        viewModel.favourites.sink(receiveCompletion: { _ in
+            // TODO Handle error, maybe it should be possible to have an error
+            // and that it should be a separate observable?
+        }, receiveValue: { [weak self] favourites in
+            let showEmptyAddButton = favourites.isEmpty
+
+            self?.tableView.isHidden = showEmptyAddButton
+            self?.emptyAddButton.isHidden = !showEmptyAddButton
+            self?.tableView.reloadData()
+        }).store(in: &cancelable)
     }
 }
 
 extension FavouriteListViewController {
     @objc
     func addButtonTapped(_ sender: UIBarButtonItem) {
+        viewModel?.favourites.value.append(Favourite(name: "London"))
+    }
+}
 
+extension FavouriteListViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard let favourites = viewModel?.favourites.value else { return 0 }
+        return favourites.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let favourites = viewModel?.favourites.value else { return UITableViewCell() }
+
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.textLabel?.text = favourites[indexPath.row].name
+        return cell
     }
 }
