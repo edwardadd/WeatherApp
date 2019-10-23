@@ -13,11 +13,14 @@ class AppCoordinator {
 
     var navigationController: UINavigationController?
     var networkService: API
+    var storage: Storage
 
     init(navigationController: UINavigationController = UINavigationController(),
-         networkService: API = NetworkService(key: "dae99d7ad1e9537e8e3c69b22a9182f6")) {
+         networkService: API = NetworkService(key: "dae99d7ad1e9537e8e3c69b22a9182f6"),
+         storage: Storage = CoreDataRepository.shared) {
         self.navigationController = navigationController
         self.networkService = networkService
+        self.storage = storage
     }
 
     func start() {
@@ -30,7 +33,8 @@ class AppCoordinator {
             fatalError("Could not find initial view controller")
         }
         let viewModel = FavouriteListViewModel(appCoordinator: self,
-                                               networkService: networkService)
+                                               networkService: networkService,
+                                               storage: storage)
         viewController.viewModel = viewModel
         navigationController?.setViewControllers([viewController], animated: false)
     }
@@ -41,9 +45,16 @@ class AppCoordinator {
             fatalError("Could not find initial view controller")
         }
         let viewModel = FavouriteViewModel(appCoordinator: self,
-                                           networkService: networkService)
+                                           networkService: networkService,
+                                           storage: storage)
         viewController.viewModel = viewModel
         let newNavigationController = UINavigationController(rootViewController: viewController)
         navigationController?.present(newNavigationController, animated: true, completion: nil)
+    }
+
+    func refreshFavouritesList() {
+        guard let favouriteListViewController = navigationController?.viewControllers.first as? FavouriteListViewController else { return }
+
+        favouriteListViewController.viewModel?.refresh()
     }
 }

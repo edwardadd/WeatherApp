@@ -7,7 +7,15 @@
 //
 
 import Foundation
+import CoreData
 
-struct Favourite: Equatable {
-    let name: String
+@objc(Favourite)
+class Favourite: NSManagedObject {
+    @NSManaged var cityId: Int32
+    @NSManaged var name: String
+
+    static func create(moc: NSManagedObjectContext) -> Favourite {
+        // swiftlint:disable force_cast
+        return NSEntityDescription.insertNewObject(forEntityName: "Favourite", into: moc) as! Favourite
+    }
 }

@@ -66,7 +66,9 @@ extension AddFavouriteViewController {
     @objc
     func doneButtonTapped(_ sender: UIBarButtonItem) {
         viewModel?.save()
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: { [weak self] in
+            self?.viewModel?.appCoordinator?.refreshFavouritesList()
+        })
     }
 
     @objc

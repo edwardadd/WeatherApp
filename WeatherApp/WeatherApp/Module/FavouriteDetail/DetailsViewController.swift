@@ -8,6 +8,4 @@
 
 import UIKit
 
-class DetailsViewController: UIViewController {
-    
-}
+class DetailsViewController: UIViewController { }

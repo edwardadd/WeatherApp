@@ -12,15 +12,24 @@ import Combine
 struct FavouriteListViewModel {
     weak var appCoordinator: AppCoordinator?
     weak var networkService: WeatherFetchable?
+    weak var storage: Storage?
 
     var favourites: CurrentValueSubject<[Favourite], Error>
 
-    init(appCoordinator: AppCoordinator, networkService: WeatherFetchable) {
+    init(appCoordinator: AppCoordinator,
+         networkService: WeatherFetchable,
+         storage: Storage) {
         self.appCoordinator = appCoordinator
         self.networkService = networkService
+        self.storage = storage
 
-        // TODO Load list of favourites and load their data
-        favourites = CurrentValueSubject<[Favourite], Error>([])
+        let list = storage.fetchFavouriteList()
+        favourites = CurrentValueSubject<[Favourite], Error>(list)
+    }
+
+    func refresh() {
+        guard let storage = storage else { return }
+        favourites.value = storage.fetchFavouriteList()
     }
 
     func shouldShowAddFavourite() {
@@ -28,6 +37,5 @@ struct FavouriteListViewModel {
     }
 
     func delete(favourite: Int) {
-
     }
 }

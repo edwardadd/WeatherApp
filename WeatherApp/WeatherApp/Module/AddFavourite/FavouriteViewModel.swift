@@ -13,11 +13,13 @@ import Combine
 struct DetailedWeather {
 
     let name: String
+    let cityId: Int
     let windSpeed: String
     let weatherDescription: String
 
     init(response: Weather) {
         name = response.name
+        cityId = response.id
         windSpeed = "Wind: \(response.wind.speed)"
         weatherDescription = response.weather.first?.description ?? ""
     }
@@ -27,13 +29,17 @@ class FavouriteViewModel {
 
     weak var appCoordinator: AppCoordinator?
     weak var networkService: WeatherFetchable?
+    weak var storage: Storage?
 
     var weather: CurrentValueSubject<DetailedWeather?, Error>
     var cancelable: AnyCancellable?
 
-    init(appCoordinator: AppCoordinator, networkService: WeatherFetchable) {
+    init(appCoordinator: AppCoordinator,
+         networkService: WeatherFetchable,
+         storage: Storage) {
         self.appCoordinator = appCoordinator
         self.networkService = networkService
+        self.storage = storage
 
         weather = CurrentValueSubject<DetailedWeather?, Error>(nil)
     }
@@ -50,6 +56,10 @@ class FavouriteViewModel {
     }
 
     func save() {
-        
+        guard let storage = storage, let weather = weather.value else { return }
+        let favourite = storage.createFavourite()
+        favourite.cityId = Int32(weather.cityId)
+        favourite.name = weather.name
+        storage.save()
     }
 }

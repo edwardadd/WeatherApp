@@ -10,10 +10,12 @@ import Foundation
 
 struct Weather: Codable, Equatable {
     let name: String
+    let id: Int
     let wind: Wind
     let weather: [Weather]
 
     init(name: String) {
+        self.id = 0
         self.name = name
         self.wind = Wind(speed: 0)
         self.weather = []
