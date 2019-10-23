@@ -24,4 +24,23 @@ class AppCoordinatorTests: XCTestCase {
         // Then
         XCTAssert(coordinator.navigationController?.viewControllers.first is FavouriteListViewController)
     }
+
+    func testShowAddFavourite() {
+        // Given
+        let coordinator = AppCoordinator()
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        window.rootViewController = coordinator.navigationController
+
+        // When
+        coordinator.start()
+        _ = coordinator.navigationController?.view
+        coordinator.showAddFavourite()
+
+        RunLoop.current.run(until: Date().addingTimeInterval(1))
+        RunLoop.current.run(until: Date().addingTimeInterval(1))
+        RunLoop.current.run(until: Date().addingTimeInterval(1))
+
+        // Then
+        XCTAssert(coordinator.navigationController?.presentedViewController is AddFavouriteViewController)
+    }
 }

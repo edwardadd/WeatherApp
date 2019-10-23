@@ -31,4 +31,16 @@ class AppCoordinator {
         viewController.viewModel = viewModel
         navigationController?.setViewControllers([viewController], animated: false)
     }
+
+    func showAddFavourite() {
+        let storyboard = UIStoryboard(name: "AddFavouriteViewController", bundle: nil)
+        guard let viewController = storyboard.instantiateInitialViewController() as? AddFavouriteViewController else {
+            fatalError("Could not find initial view controller")
+        }
+        let viewModel = FavouriteViewModel(appCoordinator: self,
+                                           networkService: NetworkService(key: apiKey))
+        viewController.viewModel = viewModel
+        let newNavigationController = UINavigationController(rootViewController: viewController)
+        navigationController?.present(newNavigationController, animated: true, completion: nil)
+    }
 }

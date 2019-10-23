@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9EJ-0N-XTl">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Add-->
+        <scene sceneID="XPB-Tx-WZf">
+            <objects>
+                <viewController storyboardIdentifier="AddFavouriteViewController" title="Add" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9EJ-0N-XTl" customClass="AddFavouriteViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vQl-Q5-6ct">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type a location..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NFr-me-yyx">
+                                <rect key="frame" x="16" y="44" width="382" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="cEP-QN-HQQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="xXv-3t-tRn">
+                                <rect key="frame" x="16" y="104" width="382" height="256"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="wh0-Ge-jk6">
+                                        <rect key="frame" x="0.0" y="0.0" width="191" height="256"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wind" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="SuZ-RQ-3Ag">
+                                                <rect key="frame" x="0.0" y="2" width="191" height="231"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FWx-KT-JDT">
+                                                <rect key="frame" x="0.0" y="234" width="191" height="22"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="22" id="xa8-eM-pvN"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="gQK-nj-Sm0">
+                                        <rect key="frame" x="191" y="0.0" width="191" height="256"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloud.sun" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="VFh-KV-cfi">
+                                                <rect key="frame" x="0.0" y="-1.5" width="191" height="233"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dwk-OK-qX4">
+                                                <rect key="frame" x="0.0" y="234" width="191" height="22"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="22" id="Ypd-fa-DPP"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="256" id="d9o-wp-MeS"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="7dX-EM-fvJ" firstAttribute="trailing" secondItem="xXv-3t-tRn" secondAttribute="trailing" constant="16" id="DsH-yl-Iqh"/>
+                            <constraint firstItem="xXv-3t-tRn" firstAttribute="top" secondItem="NFr-me-yyx" secondAttribute="bottom" constant="16" id="I4D-Y8-J4g"/>
+                            <constraint firstItem="7dX-EM-fvJ" firstAttribute="trailing" secondItem="NFr-me-yyx" secondAttribute="trailing" constant="16" id="UdL-LJ-j4d"/>
+                            <constraint firstItem="xXv-3t-tRn" firstAttribute="leading" secondItem="7dX-EM-fvJ" secondAttribute="leading" constant="16" id="mrj-c0-Xhl"/>
+                            <constraint firstItem="NFr-me-yyx" firstAttribute="top" secondItem="7dX-EM-fvJ" secondAttribute="top" id="rnt-4I-xh9"/>
+                            <constraint firstItem="NFr-me-yyx" firstAttribute="leading" secondItem="7dX-EM-fvJ" secondAttribute="leading" constant="16" id="yJY-xd-qRF"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="7dX-EM-fvJ"/>
+                    </view>
+                    <connections>
+                        <outlet property="locationTextField" destination="NFr-me-yyx" id="slt-WL-t5l"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e0q-3I-qzE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4" y="81"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="cloud.sun" catalog="system" width="64" height="44"/>
+        <image name="wind" catalog="system" width="64" height="50"/>
+    </resources>
+</document>

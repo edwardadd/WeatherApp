@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		4D7D2EC223606AEF00E2214E /* FavouriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7D2EC023606AEF00E2214E /* FavouriteTableViewCell.swift */; };
 		4D7D2EC323606AEF00E2214E /* FavouriteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D7D2EC123606AEF00E2214E /* FavouriteTableViewCell.xib */; };
+		4D7D2EC623606D9200E2214E /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7D2EC523606D9200E2214E /* DetailsViewController.swift */; };
+		4D7D2EC923606E5B00E2214E /* AddFavouriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7D2EC823606E5B00E2214E /* AddFavouriteViewController.swift */; };
+		4D7D2ECB2360704100E2214E /* FavouriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7D2ECA2360704100E2214E /* FavouriteViewModel.swift */; };
+		4D7D2ECD236077FE00E2214E /* AddFavouriteViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D7D2ECC236077FE00E2214E /* AddFavouriteViewController.storyboard */; };
 		4D827408235F9DFE00AF74E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D827407235F9DFE00AF74E5 /* AppDelegate.swift */; };
 		4D827411235F9E0000AF74E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D827410235F9E0000AF74E5 /* Assets.xcassets */; };
 		4D827414235F9E0000AF74E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D827412235F9E0000AF74E5 /* LaunchScreen.storyboard */; };
@@ -47,6 +51,10 @@
 /* Begin PBXFileReference section */
 		4D7D2EC023606AEF00E2214E /* FavouriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteTableViewCell.swift; sourceTree = "<group>"; };
 		4D7D2EC123606AEF00E2214E /* FavouriteTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavouriteTableViewCell.xib; sourceTree = "<group>"; };
+		4D7D2EC523606D9200E2214E /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		4D7D2EC823606E5B00E2214E /* AddFavouriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFavouriteViewController.swift; sourceTree = "<group>"; };
+		4D7D2ECA2360704100E2214E /* FavouriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteViewModel.swift; sourceTree = "<group>"; };
+		4D7D2ECC236077FE00E2214E /* AddFavouriteViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddFavouriteViewController.storyboard; sourceTree = "<group>"; };
 		4D827404235F9DFE00AF74E5 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D827407235F9DFE00AF74E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4D827410235F9E0000AF74E5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -105,6 +113,24 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		4D7D2EC423606D6E00E2214E /* FavouriteDetail */ = {
+			isa = PBXGroup;
+			children = (
+				4D7D2EC523606D9200E2214E /* DetailsViewController.swift */,
+			);
+			path = FavouriteDetail;
+			sourceTree = "<group>";
+		};
+		4D7D2EC723606E4800E2214E /* AddFavourite */ = {
+			isa = PBXGroup;
+			children = (
+				4D7D2EC823606E5B00E2214E /* AddFavouriteViewController.swift */,
+				4D7D2ECA2360704100E2214E /* FavouriteViewModel.swift */,
+				4D7D2ECC236077FE00E2214E /* AddFavouriteViewController.storyboard */,
+			);
+			path = AddFavourite;
+			sourceTree = "<group>";
+		};
 		4D8273FB235F9DFE00AF74E5 = {
 			isa = PBXGroup;
 			children = (
@@ -159,6 +185,8 @@
 		4D827438235FA1D200AF74E5 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				4D7D2EC723606E4800E2214E /* AddFavourite */,
+				4D7D2EC423606D6E00E2214E /* FavouriteDetail */,
 				4D82744D235FC5C900AF74E5 /* NetworkService */,
 				4D827440235FA57C00AF74E5 /* FavouriteList */,
 				4D827439235FA1E000AF74E5 /* App */,
@@ -354,6 +382,7 @@
 				4D827444235FA5CE00AF74E5 /* FavouriteList.storyboard in Resources */,
 				4D827414235F9E0000AF74E5 /* LaunchScreen.storyboard in Resources */,
 				4D827411235F9E0000AF74E5 /* Assets.xcassets in Resources */,
+				4D7D2ECD236077FE00E2214E /* AddFavouriteViewController.storyboard in Resources */,
 				4D7D2EC323606AEF00E2214E /* FavouriteTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -402,10 +431,13 @@
 				4DD55A92236052D10070F136 /* Favourite.swift in Sources */,
 				4D82744F235FC5EC00AF74E5 /* NetworkService.swift in Sources */,
 				4D827442235FA58C00AF74E5 /* FavouriteListViewController.swift in Sources */,
+				4D7D2EC623606D9200E2214E /* DetailsViewController.swift in Sources */,
 				4D7D2EC223606AEF00E2214E /* FavouriteTableViewCell.swift in Sources */,
 				4D82743B235FA1EB00AF74E5 /* AppCoordinator.swift in Sources */,
 				4D827446235FB0EB00AF74E5 /* main.swift in Sources */,
 				4DD55A90236050650070F136 /* FavouriteListViewModel.swift in Sources */,
+				4D7D2ECB2360704100E2214E /* FavouriteViewModel.swift in Sources */,
+				4D7D2EC923606E5B00E2214E /* AddFavouriteViewController.swift in Sources */,
 				4D827451235FC61400AF74E5 /* Weather.swift in Sources */,
 				4D827408235F9DFE00AF74E5 /* AppDelegate.swift in Sources */,
 				4D827453235FC63600AF74E5 /* NetworkService+WeatherFetchable.swift in Sources */,

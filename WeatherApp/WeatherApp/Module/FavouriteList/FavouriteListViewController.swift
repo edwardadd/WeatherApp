@@ -48,7 +48,8 @@ class FavouriteListViewController: UIViewController {
 extension FavouriteListViewController {
     @objc
     func addButtonTapped(_ sender: UIBarButtonItem) {
-        viewModel?.favourites.value.append(Favourite(name: "London"))
+//        viewModel?.favourites.value.append(Favourite(name: "London"))
+        viewModel?.shouldShowAddFavourite()
     }
 }
 
@@ -61,7 +62,9 @@ extension FavouriteListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let favourites = viewModel?.favourites.value,
             let cell = tableView.dequeueReusableCell(withIdentifier: FavouriteTableViewCell.identifier,
-                                                     for: indexPath) as? FavouriteTableViewCell else { return UITableViewCell() }
+                                                     for: indexPath) as? FavouriteTableViewCell else {
+                                                        return UITableViewCell()
+        }
         cell.configure(locationName: favourites[indexPath.row].name)
         return cell
     }

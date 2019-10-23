@@ -1,5 +1,5 @@
 //
-//  FavouriteListViewModel.swift
+//  FavouriteViewModel.swift
 //  WeatherApp
 //
 //  Created by Edward Addley on 23/10/2019.
@@ -9,25 +9,24 @@
 import Foundation
 import Combine
 
-struct FavouriteListViewModel {
+struct DetailedWeather {
+
+}
+
+struct FavouriteViewModel {
+
     weak var appCoordinator: AppCoordinator?
     weak var networkService: WeatherFetchable?
 
-    var favourites: CurrentValueSubject<[Favourite], Error>
+    var weather: CurrentValueSubject<DetailedWeather?, Error>
 
     init(appCoordinator: AppCoordinator, networkService: WeatherFetchable) {
         self.appCoordinator = appCoordinator
         self.networkService = networkService
 
-        // TODO Load list of favourites and load their data
-        favourites = CurrentValueSubject<[Favourite], Error>([])
+        weather = CurrentValueSubject<DetailedWeather?, Error>(nil)
     }
 
-    func shouldShowAddFavourite() {
-        appCoordinator?.showAddFavourite()
-    }
-
-    func delete(favourite: Int) {
-
+    func search(city: String) {
     }
 }
