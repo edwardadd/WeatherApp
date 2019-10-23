@@ -23,6 +23,33 @@ class FavouriteListTests: XCTestCase {
         // Then
         XCTAssertEqual(viewModel.favourites.value, [])
     }
+
+    func testShowEmptyButton() {
+        // Given
+        let mockNetworkService = MockNetworkService()
+        let mockAppCoordinator = MockAppCoordinator()
+
+        // When
+        let viewModel = FavouriteListViewModel(appCoordinator: mockAppCoordinator,
+                                               networkService: mockNetworkService)
+
+        // Then
+        XCTAssertTrue(viewModel.showEmptyAddButton)
+    }
+
+    func testShowFavourites() {
+        // Given
+        let mockNetworkService = MockNetworkService()
+        let mockAppCoordinator = MockAppCoordinator()
+
+        // When
+        let viewModel = FavouriteListViewModel(appCoordinator: mockAppCoordinator,
+                                               networkService: mockNetworkService)
+        viewModel.favourites.value = [Favourite(name: "London")]
+
+        // Then
+        XCTAssertFalse(viewModel.showEmptyAddButton)
+    }
 }
 
 extension FavouriteListTests {
