@@ -19,3 +19,9 @@ This tech test has been a learning experience. The idea was to learn to use Comb
 * Weather isn't shown on the favourites list
 * Only the minimal weather data is used
 * There is more room for even more tests
+
+## What to do next time?
+
+* Trying something new meant there was times where I was stumped. For instance streams are deallocated if they are kept locally or in an AnyCancellable store.
+* Starting off with testing and as time passed moving into a more hastey state. Forgetting the tests and focusing on developing quicker instead.
+* I misunderstood the requirement about the weather forecast and nearly missed it.
