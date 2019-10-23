@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type a location..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NFr-me-yyx">
-                                <rect key="frame" x="16" y="44" width="382" height="44"/>
+                                <rect key="frame" x="16" y="60" width="382" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="cEP-QN-HQQ"/>
                                 </constraints>
@@ -24,7 +24,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="xXv-3t-tRn">
-                                <rect key="frame" x="16" y="104" width="382" height="256"/>
+                                <rect key="frame" x="16" y="120" width="382" height="256"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="wh0-Ge-jk6">
                                         <rect key="frame" x="0.0" y="0.0" width="191" height="256"/>
@@ -72,7 +72,7 @@
                             <constraint firstItem="xXv-3t-tRn" firstAttribute="top" secondItem="NFr-me-yyx" secondAttribute="bottom" constant="16" id="I4D-Y8-J4g"/>
                             <constraint firstItem="7dX-EM-fvJ" firstAttribute="trailing" secondItem="NFr-me-yyx" secondAttribute="trailing" constant="16" id="UdL-LJ-j4d"/>
                             <constraint firstItem="xXv-3t-tRn" firstAttribute="leading" secondItem="7dX-EM-fvJ" secondAttribute="leading" constant="16" id="mrj-c0-Xhl"/>
-                            <constraint firstItem="NFr-me-yyx" firstAttribute="top" secondItem="7dX-EM-fvJ" secondAttribute="top" id="rnt-4I-xh9"/>
+                            <constraint firstItem="NFr-me-yyx" firstAttribute="top" secondItem="7dX-EM-fvJ" secondAttribute="top" constant="16" id="rnt-4I-xh9"/>
                             <constraint firstItem="NFr-me-yyx" firstAttribute="leading" secondItem="7dX-EM-fvJ" secondAttribute="leading" constant="16" id="yJY-xd-qRF"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7dX-EM-fvJ"/>
