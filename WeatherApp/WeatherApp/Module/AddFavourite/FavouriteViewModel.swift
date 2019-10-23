@@ -7,18 +7,29 @@
 //
 
 import Foundation
+import UIKit
 import Combine
 
 struct DetailedWeather {
 
+    let name: String
+    let windSpeed: String
+    let weatherDescription: String
+
+    init(response: Weather) {
+        name = response.name
+        windSpeed = "Wind: \(response.wind.speed)"
+        weatherDescription = response.weather.first?.description ?? ""
+    }
 }
 
-struct FavouriteViewModel {
+class FavouriteViewModel {
 
     weak var appCoordinator: AppCoordinator?
     weak var networkService: WeatherFetchable?
 
     var weather: CurrentValueSubject<DetailedWeather?, Error>
+    var cancelable: AnyCancellable?
 
     init(appCoordinator: AppCoordinator, networkService: WeatherFetchable) {
         self.appCoordinator = appCoordinator
@@ -28,5 +39,17 @@ struct FavouriteViewModel {
     }
 
     func search(city: String) {
+        cancelable?.cancel()
+        cancelable = networkService?.fetch(city: city)
+            .map { DetailedWeather(response: $0) }
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { _ in
+            }, receiveValue: { detailedWeather in
+                self.weather.value = detailedWeather
+            })
+    }
+
+    func save() {
+        
     }
 }

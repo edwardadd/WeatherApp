@@ -79,6 +79,8 @@
                     </view>
                     <connections>
                         <outlet property="locationTextField" destination="NFr-me-yyx" id="slt-WL-t5l"/>
+                        <outlet property="weatherLabel" destination="Dwk-OK-qX4" id="Zax-wQ-p1V"/>
+                        <outlet property="windLabel" destination="FWx-KT-JDT" id="aDR-jg-n8s"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e0q-3I-qzE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

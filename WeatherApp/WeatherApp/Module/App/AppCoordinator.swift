@@ -9,12 +9,15 @@
 import UIKit
 
 class AppCoordinator {
+    typealias API = WeatherFetchable
+
     var navigationController: UINavigationController?
+    var networkService: API
 
-    let apiKey = "dae99d7ad1e9537e8e3c69b22a9182f6"
-
-    init(navigationController: UINavigationController = UINavigationController()) {
+    init(navigationController: UINavigationController = UINavigationController(),
+         networkService: API = NetworkService(key: "dae99d7ad1e9537e8e3c69b22a9182f6")) {
         self.navigationController = navigationController
+        self.networkService = networkService
     }
 
     func start() {
@@ -27,7 +30,7 @@ class AppCoordinator {
             fatalError("Could not find initial view controller")
         }
         let viewModel = FavouriteListViewModel(appCoordinator: self,
-                                               networkService: NetworkService(key: apiKey))
+                                               networkService: networkService)
         viewController.viewModel = viewModel
         navigationController?.setViewControllers([viewController], animated: false)
     }
@@ -38,7 +41,7 @@ class AppCoordinator {
             fatalError("Could not find initial view controller")
         }
         let viewModel = FavouriteViewModel(appCoordinator: self,
-                                           networkService: NetworkService(key: apiKey))
+                                           networkService: networkService)
         viewController.viewModel = viewModel
         let newNavigationController = UINavigationController(rootViewController: viewController)
         navigationController?.present(newNavigationController, animated: true, completion: nil)

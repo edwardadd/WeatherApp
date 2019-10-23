@@ -19,14 +19,58 @@ class AddFavouriteViewController: UIViewController {
     private var cancelable: Set<AnyCancellable> = Set()
 
     override func viewDidLoad() {
+
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done,
+                                                            target: self,
+                                                            action: #selector(doneButtonTapped(_:)))
+
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel,
+                                                            target: self,
+                                                            action: #selector(cancelButtonTapped(_:)))
+        bindToViewModel()
+    }
+
+    private func bindToViewModel() {
+        guard let viewModel = viewModel else { return }
+
         // swiftlint:disable force_cast
         NotificationCenter.default.publisher(for: UITextField.textDidChangeNotification, object: locationTextField)
-            .map({ ($0.object as! UITextField).text })
+            .compactMap({ ($0.object as! UITextField).text })
+            .compactMap { $0.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) }
             .debounce(for: .milliseconds(500), scheduler: RunLoop.main)
+            .filter { !$0.isEmpty }
             .sink { [weak self] text in
-                if let text = text {
-                    self?.viewModel?.search(city: text)
-                }
-        }.store(in: &cancelable)
+                self?.viewModel?.search(city: text)
+            }
+            .store(in: &cancelable)
+
+        viewModel.weather.sink(receiveCompletion: { [weak self] _ in
+            self?.clearLabels()
+        }, receiveValue: { [weak self] weather in
+            if let weather = weather {
+                self?.windLabel.text = weather.windSpeed
+                self?.weatherLabel.text = weather.weatherDescription
+            } else {
+                self?.clearLabels()
+            }
+        }).store(in: &cancelable)
+    }
+
+    private func clearLabels() {
+        windLabel.text = "-"
+        weatherLabel.text = "-"
+    }
+}
+
+extension AddFavouriteViewController {
+    @objc
+    func doneButtonTapped(_ sender: UIBarButtonItem) {
+        viewModel?.save()
+        dismiss(animated: true, completion: nil)
+    }
+
+    @objc
+    func cancelButtonTapped(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
     }
 }

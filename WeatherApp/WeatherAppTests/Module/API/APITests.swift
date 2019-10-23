@@ -12,6 +12,7 @@ import Combine
 
 class APITests: XCTestCase {
 
+    // Note: This end to end test should only be enable for testing
     func testFetchWeatherForCity() {
         let exp = expectation(description: "Wait for async end to end test to return")
 
