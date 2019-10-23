@@ -20,7 +20,7 @@ struct DetailedWeather {
     init(response: Weather) {
         name = response.name
         cityId = response.id
-        windSpeed = "Wind: \(response.wind.speed)"
+        windSpeed = "Wind: \(response.wind.speed) m/s"
         weatherDescription = response.weather.first?.description ?? ""
     }
 }

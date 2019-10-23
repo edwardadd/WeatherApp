@@ -48,7 +48,6 @@ class FavouriteListViewController: UIViewController {
 extension FavouriteListViewController {
     @objc
     func addButtonTapped(_ sender: UIBarButtonItem) {
-//        viewModel?.favourites.value.append(Favourite(name: "London"))
         viewModel?.shouldShowAddFavourite()
     }
 }

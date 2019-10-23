@@ -27,7 +27,18 @@ class AddFavouriteViewController: UIViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel,
                                                             target: self,
                                                             action: #selector(cancelButtonTapped(_:)))
+
+        navigationItem.rightBarButtonItem?.isEnabled = false
+
         bindToViewModel()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        locationTextField.becomeFirstResponder()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        locationTextField.resignFirstResponder()
     }
 
     private func bindToViewModel() {
@@ -46,12 +57,15 @@ class AddFavouriteViewController: UIViewController {
 
         viewModel.weather.sink(receiveCompletion: { [weak self] _ in
             self?.clearLabels()
+            self?.navigationItem.rightBarButtonItem?.isEnabled = false
         }, receiveValue: { [weak self] weather in
             if let weather = weather {
                 self?.windLabel.text = weather.windSpeed
                 self?.weatherLabel.text = weather.weatherDescription
+                self?.navigationItem.rightBarButtonItem?.isEnabled = true
             } else {
                 self?.clearLabels()
+                self?.navigationItem.rightBarButtonItem?.isEnabled = false
             }
         }).store(in: &cancelable)
     }
