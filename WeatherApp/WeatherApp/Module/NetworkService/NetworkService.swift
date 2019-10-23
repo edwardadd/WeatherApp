@@ -24,6 +24,7 @@ class NetworkService {
         return urlSession.dataTaskPublisher(for: request)
             .map { result in
                 if let response = result.response as? HTTPURLResponse {
+                    // TODO: Handle http status codes other than 200
                     print(response)
                 }
                 return result.data

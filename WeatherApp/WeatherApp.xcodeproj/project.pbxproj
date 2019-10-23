@@ -20,6 +20,9 @@
 		4D82744F235FC5EC00AF74E5 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D82744E235FC5EC00AF74E5 /* NetworkService.swift */; };
 		4D827451235FC61400AF74E5 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D827450235FC61400AF74E5 /* Weather.swift */; };
 		4D827453235FC63600AF74E5 /* NetworkService+WeatherFetchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D827452235FC63600AF74E5 /* NetworkService+WeatherFetchable.swift */; };
+		4DD55A8D236034660070F136 /* FavouriteListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD55A8C236034660070F136 /* FavouriteListTests.swift */; };
+		4DD55A90236050650070F136 /* FavouriteListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD55A8F236050650070F136 /* FavouriteListViewModel.swift */; };
+		4DD55A92236052D10070F136 /* Favourite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD55A91236052D10070F136 /* Favourite.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +62,9 @@
 		4D82744E235FC5EC00AF74E5 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		4D827450235FC61400AF74E5 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		4D827452235FC63600AF74E5 /* NetworkService+WeatherFetchable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkService+WeatherFetchable.swift"; sourceTree = "<group>"; };
+		4DD55A8C236034660070F136 /* FavouriteListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteListTests.swift; sourceTree = "<group>"; };
+		4DD55A8F236050650070F136 /* FavouriteListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteListViewModel.swift; sourceTree = "<group>"; };
+		4DD55A91236052D10070F136 /* Favourite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favourite.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +166,8 @@
 			children = (
 				4D827441235FA58C00AF74E5 /* FavouriteListViewController.swift */,
 				4D827443235FA5CE00AF74E5 /* FavouriteList.storyboard */,
+				4DD55A8F236050650070F136 /* FavouriteListViewModel.swift */,
+				4DD55A91236052D10070F136 /* Favourite.swift */,
 			);
 			path = FavouriteList;
 			sourceTree = "<group>";
@@ -167,6 +175,7 @@
 		4D827447235FB36E00AF74E5 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				4DD55A8E2360346B0070F136 /* FavouriteList */,
 				4D827449235FB38000AF74E5 /* API */,
 				4D827448235FB37800AF74E5 /* App */,
 			);
@@ -200,11 +209,27 @@
 		4D82744D235FC5C900AF74E5 /* NetworkService */ = {
 			isa = PBXGroup;
 			children = (
+				4DD55A8B236033630070F136 /* ResponseModels */,
 				4D82744E235FC5EC00AF74E5 /* NetworkService.swift */,
-				4D827450235FC61400AF74E5 /* Weather.swift */,
 				4D827452235FC63600AF74E5 /* NetworkService+WeatherFetchable.swift */,
 			);
 			path = NetworkService;
+			sourceTree = "<group>";
+		};
+		4DD55A8B236033630070F136 /* ResponseModels */ = {
+			isa = PBXGroup;
+			children = (
+				4D827450235FC61400AF74E5 /* Weather.swift */,
+			);
+			path = ResponseModels;
+			sourceTree = "<group>";
+		};
+		4DD55A8E2360346B0070F136 /* FavouriteList */ = {
+			isa = PBXGroup;
+			children = (
+				4DD55A8C236034660070F136 /* FavouriteListTests.swift */,
+			);
+			path = FavouriteList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -359,10 +384,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DD55A92236052D10070F136 /* Favourite.swift in Sources */,
 				4D82744F235FC5EC00AF74E5 /* NetworkService.swift in Sources */,
 				4D827442235FA58C00AF74E5 /* FavouriteListViewController.swift in Sources */,
 				4D82743B235FA1EB00AF74E5 /* AppCoordinator.swift in Sources */,
 				4D827446235FB0EB00AF74E5 /* main.swift in Sources */,
+				4DD55A90236050650070F136 /* FavouriteListViewModel.swift in Sources */,
 				4D827451235FC61400AF74E5 /* Weather.swift in Sources */,
 				4D827408235F9DFE00AF74E5 /* AppDelegate.swift in Sources */,
 				4D827453235FC63600AF74E5 /* NetworkService+WeatherFetchable.swift in Sources */,
@@ -373,6 +400,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DD55A8D236034660070F136 /* FavouriteListTests.swift in Sources */,
 				4D82744B235FB39A00AF74E5 /* APITests.swift in Sources */,
 				4D82743F235FA4BE00AF74E5 /* AppCoordinatorTests.swift in Sources */,
 			);

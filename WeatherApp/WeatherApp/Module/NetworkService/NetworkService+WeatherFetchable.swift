@@ -9,7 +9,7 @@
 import Foundation
 import Combine
 
-protocol WeatherFetchable {
+protocol WeatherFetchable: class {
     func fetch(city: String) -> AnyPublisher<Weather, Error>
 }
 
