@@ -7,26 +7,41 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Favourite List View Controller-->
+        <!--Favourite Locations-->
         <scene sceneID="gsZ-KI-XFO">
             <objects>
-                <viewController storyboardIdentifier="FavouriteListViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="pHI-DZ-d9n" customClass="FavouriteListViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FavouriteListViewController" title="Favourite Locations" useStoryboardIdentifierAsRestorationIdentifier="YES" id="pHI-DZ-d9n" customClass="FavouriteListViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VTl-tm-p4i">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YYv-rl-fLC">
-                                <rect key="frame" x="184" y="433" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0kj-gS-Yp3">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xBN-Yc-jC6">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <state key="normal" title="Add a new favourite location..."/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="YYv-rl-fLC" firstAttribute="centerX" secondItem="VTl-tm-p4i" secondAttribute="centerX" id="YWD-MQ-BgJ"/>
-                            <constraint firstItem="YYv-rl-fLC" firstAttribute="centerY" secondItem="VTl-tm-p4i" secondAttribute="centerY" id="sxT-HE-bjN"/>
+                            <constraint firstItem="MMs-qj-erN" firstAttribute="bottom" secondItem="xBN-Yc-jC6" secondAttribute="bottom" id="HrC-wz-bwa"/>
+                            <constraint firstItem="MMs-qj-erN" firstAttribute="trailing" secondItem="xBN-Yc-jC6" secondAttribute="trailing" id="I3V-pp-Gy2"/>
+                            <constraint firstItem="xBN-Yc-jC6" firstAttribute="top" secondItem="MMs-qj-erN" secondAttribute="top" id="Vh4-jt-hhB"/>
+                            <constraint firstItem="0kj-gS-Yp3" firstAttribute="leading" secondItem="MMs-qj-erN" secondAttribute="leading" id="Z1B-G9-9uE"/>
+                            <constraint firstItem="MMs-qj-erN" firstAttribute="bottom" secondItem="0kj-gS-Yp3" secondAttribute="bottom" id="Z8s-su-rG4"/>
+                            <constraint firstItem="xBN-Yc-jC6" firstAttribute="leading" secondItem="MMs-qj-erN" secondAttribute="leading" id="g5g-Rf-Ayp"/>
+                            <constraint firstItem="MMs-qj-erN" firstAttribute="trailing" secondItem="0kj-gS-Yp3" secondAttribute="trailing" id="tiu-Ls-bXN"/>
+                            <constraint firstItem="0kj-gS-Yp3" firstAttribute="top" secondItem="MMs-qj-erN" secondAttribute="top" id="zdS-k7-Juf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="MMs-qj-erN"/>
                     </view>
+                    <connections>
+                        <outlet property="emptyAddButton" destination="xBN-Yc-jC6" id="Qch-cY-C88"/>
+                        <outlet property="tableView" destination="0kj-gS-Yp3" id="8x8-ja-6Vp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CEX-Oz-sta" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
