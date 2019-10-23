@@ -240,17 +240,9 @@
 		4D827449235FB38000AF74E5 /* API */ = {
 			isa = PBXGroup;
 			children = (
-				4D82744C235FB3E900AF74E5 /* JsonData */,
 				4D82744A235FB39A00AF74E5 /* APITests.swift */,
 			);
 			path = API;
-			sourceTree = "<group>";
-		};
-		4D82744C235FB3E900AF74E5 /* JsonData */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = JsonData;
 			sourceTree = "<group>";
 		};
 		4D82744D235FC5C900AF74E5 /* NetworkService */ = {

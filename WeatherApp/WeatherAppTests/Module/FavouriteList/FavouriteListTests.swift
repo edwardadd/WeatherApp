@@ -7,33 +7,28 @@
 //
 
 import XCTest
+import CoreData
 import Combine
 @testable import WeatherApp
 
 class FavouriteListTests: XCTestCase {
+    let mockNetworkService = MockNetworkService()
+    let mockAppCoordinator = MockAppCoordinator()
+    let mockStorage = MockStorage()
+
+    var viewModel: FavouriteListViewModel!
+
+    override func setUp() {
+        viewModel = FavouriteListViewModel(appCoordinator: mockAppCoordinator,
+                                           networkService: mockNetworkService,
+                                           storage: mockStorage)
+    }
+
     func testZeroFavourites() {
-        // Given
-        let mockNetworkService = MockNetworkService()
-        let mockAppCoordinator = MockAppCoordinator()
-
-        // When
-        let viewModel = FavouriteListViewModel(appCoordinator: mockAppCoordinator,
-                                               networkService: mockNetworkService)
-
-        // Then
         XCTAssertEqual(viewModel.favourites.value, [])
     }
 
     func testShowEmptyButton() {
-        // Given
-        let mockNetworkService = MockNetworkService()
-        let mockAppCoordinator = MockAppCoordinator()
-
-        // When
-        let viewModel = FavouriteListViewModel(appCoordinator: mockAppCoordinator,
-                                               networkService: mockNetworkService)
-
-        // Then
         let exp = expectation(description: "Update when favourites change")
         let subject = viewModel.favourites.sink(receiveCompletion: { _ in },
                                                 receiveValue: { favourites in
@@ -45,14 +40,6 @@ class FavouriteListTests: XCTestCase {
     }
 
     func testShowFavourites() {
-        // Given
-        let mockNetworkService = MockNetworkService()
-        let mockAppCoordinator = MockAppCoordinator()
-
-        // When
-        let viewModel = FavouriteListViewModel(appCoordinator: mockAppCoordinator,
-                                               networkService: mockNetworkService)
-
         let exp = expectation(description: "Update when favourites change")
         var count = 0
         let subject = viewModel.favourites.sink(receiveCompletion: { _ in
@@ -66,9 +53,9 @@ class FavouriteListTests: XCTestCase {
             count += 1
         })
 
-        viewModel.favourites.value = [Favourite(name: "London")]
+        let newValue = Favourite()
+        viewModel.favourites.value = [newValue]
 
-        // Then
         wait(for: [exp], timeout: 10)
     }
 }
@@ -84,5 +71,15 @@ extension FavouriteListTests {
         func fetch(city: String) -> AnyPublisher<Weather, Error> {
             return CurrentValueSubject<Weather, Error>(Weather(name: "London")).eraseToAnyPublisher()
         }
+    }
+
+    class MockStorage: Storage {
+        var poc: NSPersistentContainer
+
+        init() {
+            poc = NSPersistentContainer(name: "Model")
+        }
+
+        func save() { }
     }
 }

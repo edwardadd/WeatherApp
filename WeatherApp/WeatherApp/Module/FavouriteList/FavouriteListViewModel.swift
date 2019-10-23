@@ -37,5 +37,9 @@ struct FavouriteListViewModel {
     }
 
     func delete(favourite: Int) {
+        guard let storage = storage else { return }
+        let toBeRemoved = favourites.value[favourite]
+        storage.delete(favourite: toBeRemoved)
+        favourites.value.remove(at: favourite)
     }
 }

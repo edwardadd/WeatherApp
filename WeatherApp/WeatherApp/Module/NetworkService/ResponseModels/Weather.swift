@@ -8,6 +8,7 @@
 
 import Foundation
 
+// swiftlint:disable identifier_name
 struct Weather: Codable, Equatable {
     let name: String
     let id: Int
@@ -17,7 +18,7 @@ struct Weather: Codable, Equatable {
     init(name: String) {
         self.id = 0
         self.name = name
-        self.wind = Wind(speed: 0)
+        self.wind = Wind(speed: 0, deg: 0)
         self.weather = []
     }
 
@@ -27,5 +28,6 @@ struct Weather: Codable, Equatable {
 
     struct Wind: Codable, Equatable {
         let speed: Float
+        let deg: Float
     }
 }
